@@ -25,8 +25,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '>= 13.0'
   spec.add_development_dependency 'rspec', '~> 3.3'
 
-  spec.add_dependency 'http', '~> 2.0'
-  spec.add_dependency 'nokogiri', '~> 1.6'
+  spec.add_dependency 'http', '~> 2.2.2'
+  spec.add_dependency 'nokogiri', '~> 1.10'
 
   spec.required_ruby_version = '>= 2.0'
   spec.required_rubygems_version = '>= 1.3.5'
