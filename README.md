@@ -1,11 +1,11 @@
 # FipeApi
 
-![Gem Version](http://img.shields.io/gem/v/fipe_api.svg)
-![Build Status](http://img.shields.io/travis/caiofct/fipe_api.svg)
-![Dependency Status](http://img.shields.io/gemnasium/caiofct/fipe_api.svg)
-![Code Climate](http://img.shields.io/codeclimate/github/caiofct/fipe_api.svg)
+![Gem Version](https://img.shields.io/gem/v/fipe_api.svg)
+![Build Status](https://img.shields.io/travis/caiofct/fipe_api.svg)
+![Dependency Status](https://img.shields.io/gemnasium/caiofct/fipe_api.svg)
+![Code Climate](https://img.shields.io/codeclimate/github/caiofct/fipe_api.svg)
 
-This application is a ruby client to the Tabela Fipe Api - http://www.fipe.org.br/pt-br/indices/veiculos/. It makes use of the excellent http gem to make http requests and nokogiri to parse the response
+This application is a ruby client to the Tabela Fipe Api - https://www.fipe.org.br/pt-br/indices/veiculos/. It makes use of the excellent http gem to make http requests and nokogiri to parse the response
 
 ## Installation
 
@@ -106,7 +106,7 @@ result.authentication # => g1gj386ctbp
 result.year # => FipeApi::Year(month: 7, year: 2015)
 result.fuel # => Gasolina
 result.query_time # => quinta-feira, 9 de julho de 2015 09:54:03
-result.url #=> http://www.fipe.org.br/pt-br/indices/veiculos/carro/ford/7-2015/003376-6/32000/g/g1gj386ctbp
+result.url #=> https://www.fipe.org.br/pt-br/indices/veiculos/carro/ford/7-2015/003376-6/32000/g/g1gj386ctbp
 ```
 
 ## Development

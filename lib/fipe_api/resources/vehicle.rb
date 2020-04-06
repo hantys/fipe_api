@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FipeApi
   class Vehicle < FipeApi::Base
     CAR = 1
@@ -13,9 +15,9 @@ module FipeApi
     end
 
     def self.all
-      [Vehicle.new(CAR, "Car"),
-       Vehicle.new(MOTORCYCLE, "Motorcycle"),
-       Vehicle.new(TRUCK, "Truck")]
+      [Vehicle.new(CAR, 'Car'),
+       Vehicle.new(MOTORCYCLE, 'Motorcycle'),
+       Vehicle.new(TRUCK, 'Truck')]
     end
 
     def get_tables
@@ -23,15 +25,13 @@ module FipeApi
     end
 
     def get_brands(table = nil)
-      if table.nil?
-        table = Table.latest(self)
-      end
+      table = Table.latest(self) if table.nil?
 
-      response = HTTP.post("http://veiculos.fipe.org.br/api/veiculos/ConsultarMarcas", headers: HEADERS, params: { codigoTabelaReferencia: table.id, codigoTipoVeiculo: self.id }, body: {}.to_json).to_s
+      response = HTTP.post('https://veiculos.fipe.org.br/api/veiculos/ConsultarMarcas', headers: HEADERS, params: { codigoTabelaReferencia: table.id, codigoTipoVeiculo: id }, body: {}.to_json).to_s
       brands_hash = JSON.parse(response)
       brands_result = []
       brands_hash.each do |brand|
-        brands_result << Brand.new(brand["Value"], brand["Label"], table, self)
+        brands_result << Brand.new(brand['Value'], brand['Label'], table, self)
       end
 
       brands_result
@@ -40,11 +40,11 @@ module FipeApi
     def name_id
       case id
       when CAR
-        return "carro"
+        'carro'
       when MOTORCYCLE
-        return "moto"
+        'moto'
       when TRUCK
-        return "caminhao"
+        'caminhao'
       end
     end
   end

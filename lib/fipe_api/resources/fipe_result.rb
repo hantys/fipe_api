@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FipeApi
   class FipeResult < FipeApi::Base
     attr_accessor :id
@@ -16,11 +18,11 @@ module FipeApi
       self.query_time = query_time
     end
 
-    #http://www.fipe.org.br/pt-br/indices/veiculos/carro/ford/7-2015/003376-6/32000/g/g1gj386ctbp
+    # https://www.fipe.org.br/pt-br/indices/veiculos/carro/ford/7-2015/003376-6/32000/g/g1gj386ctbp
     def url
-      "http://uat.fipe.org.br?#{year.model.brand.vehicle.name_id}/" +
-      "#{year.model.brand.name.downcase}/#{year.model.brand.table.month}-#{year.model.brand.table.year}/" +
-      "#{self.id}/#{self.year.id}/#{self.fuel.downcase.chars.first}/#{self.authentication}"
+      "https://uat.fipe.org.br?#{year.model.brand.vehicle.name_id}/" \
+        "#{year.model.brand.name.downcase}/#{year.model.brand.table.month}-#{year.model.brand.table.year}/" \
+        "#{id}/#{year.id}/#{fuel.downcase.chars.first}/#{authentication}"
     end
   end
 end

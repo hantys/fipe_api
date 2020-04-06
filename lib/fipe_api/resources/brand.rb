@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FipeApi
   class Brand < FipeApi::Base
     attr_accessor :id
@@ -13,22 +15,20 @@ module FipeApi
     end
 
     def get_models(table = nil)
-      if table.nil?
-        table = Table.latest(self.vehicle)
-      end
+      table = Table.latest(vehicle) if table.nil?
 
-      response = HTTP.post("http://veiculos.fipe.org.br/api/veiculos/ConsultarModelos",
-                 headers: HEADERS,
-                 params: {
-                    codigoTabelaReferencia: table.id,
-                    codigoTipoVeiculo: self.vehicle.id,
-                    codigoMarca: self.id
-                 },
-                 body: {}.to_json).to_s
+      response = HTTP.post('https://veiculos.fipe.org.br/api/veiculos/ConsultarModelos',
+                           headers: HEADERS,
+                           params: {
+                             codigoTabelaReferencia: table.id,
+                             codigoTipoVeiculo: vehicle.id,
+                             codigoMarca: id
+                           },
+                           body: {}.to_json).to_s
       models_hash = JSON.parse(response)
       models_result = []
-      models_hash["Modelos"].each do |model|
-        models_result << Model.new(model["Value"], model["Label"], self)
+      models_hash['Modelos'].each do |model|
+        models_result << Model.new(model['Value'], model['Label'], self)
       end
 
       models_result
